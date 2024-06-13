@@ -1,0 +1,9 @@
+# This .dotfiles directory is following the scheme described in:
+
+https://www.jakewiesler.com/blog/managing-dotfiles
+
+Each directory is a module and use stow to manage them
+
+Basically run these to symlink the dot files:
+
+    $ ./setup

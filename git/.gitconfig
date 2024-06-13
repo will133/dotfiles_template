@@ -1,0 +1,24 @@
+[alias]
+    ci = commit
+    st = status
+    br = branch
+    s = status --short
+    pl = pull -rebase
+    co = checkout
+    tagcommit = rev-list -n 1
+[user]
+    name = Lee, William
+    email = lee.will@gmail.com
+[push]
+    autoSetupRemote = true
+[core]
+    autocrlf = false
+
+[color]
+    status = auto
+    branch = auto
+[pull]
+    rebase = false
+[push]
+    default = current
+    autoSetupRemote = true
