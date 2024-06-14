@@ -4,3 +4,4 @@ stow bash
 stow vim
 stow nvim
 stow git
+stow tmux
