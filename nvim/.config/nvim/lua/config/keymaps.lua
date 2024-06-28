@@ -147,3 +147,102 @@ vim.keymap.set("x", "p", '"_dP')
 -- \:
 -- <Backspace>: Delete selected and go into insert mode
 vim.keymap.set("x", "<bs>", "c")
+
+-- @: repeats macro
+-- Tab: Indent
+vim.keymap.set("x", "<Tab>", ">")
+-- Shift-Tab: Unindent
+vim.keymap.set("x", "<s-Tab>", "<")
+
+-- Normal Mode Ctrl Key
+-- c-q: Visual block mode
+-- c-w: Window management
+-- c-e: Expand current window vertically
+vim.keymap.set("n", "<C-e>", "<cmd>vertical resize +15<cr>")
+-- c-r:
+-- c-t: pop stack
+-- c-y:
+-- c-u: location list previous
+vim.keymap.set("n", "<C-u>", "<cmd>lprev<cr>")
+-- c-i: location list next
+vim.keymap.set("n", "<C-i>", "<cmd>lnext<cr>")
+-- c-o:
+-- c-p: Previous error in error list
+vim.keymap.set("n", "<c-p>", "<cmd>cp<cr>")
+-- c-[: Esc
+-- c-]: Go forward in tag stack
+-- c-\:
+-- c-a:
+-- c-s:
+-- c-f: find_files with root
+vim.keymap.set("n", "<c-f>", LazyVim.pick("files"), {})
+-- c-g: diffget and go to next error
+vim.keymap.set("n", "<c-g>", "<cmd>diffget<cr>]czz")
+-- c-h: Move to window on left
+vim.keymap.set("n", "<c-h>", "<c-w>h")
+-- c-j: Move to window on the bottom
+vim.keymap.set("n", "<c-j>", "<c-w>j")
+-- c-k: Move to window on the top
+vim.keymap.set("n", "<c-k>", "<c-w>k")
+-- c-k: Move to window on the right
+vim.keymap.set("n", "<c-l>", "<c-w>l")
+-- c-;: vim can't map this?
+-- c-;: vim can't map this?
+-- c-z: Command key for tmux
+-- c-x:
+-- c-v: Default block visual mode
+-- c-b: Contract current window vertically
+vim.keymap.set("n", "<c-b>", "<cmd>vertical resize -15<cr>")
+-- c-n: Next error in error list
+vim.keymap.set("n", "<c-n>", "<cmd>cn<cr>")
+-- c-m: Same as Enter
+-- c-,: vim can't map
+-- c-.: vim can't map
+-- c-/:
+
+-- Insert Mode Ctrl Key
+-- c-q: Quoted insert.
+vim.keymap.set("i", "<c-w>", "<c-g>u<c-w>")
+-- c-e: Go to end of line
+vim.keymap.set("i", "<c-e>", "<esc>A")
+-- c-r:
+-- c-t: Indent shiftwidth
+-- c-y: Insert char above cursor
+-- c-u: Delete till beginning of line, create undo point
+vim.keymap.set("i", "<c-u>", "<c-g>u<c-u>")
+-- c-i: Tab
+-- c-o: Execute one normal mode command
+-- c-p: Autocomplete previous
+-- c-a: Go to beginning of line
+vim.keymap.set("i", "<c-a>", "<esc>I")
+-- c-s:
+-- c-d: Unindent shiftwidth
+-- c-f: Move cursor left
+vim.keymap.set("i", "<c-f>", "<Left>")
+-- c-g: Move cursor right
+-- This doesn't delete word
+-- vim.keymap.set("i", "<c-h>", "<c-o>b")
+vim.keymap.set("i", "<c-h>", "<c-w>")
+-- c-j: Move cursor down
+vim.keymap.set("i", "<c-j>", function()
+  return vim.fn.pumvisible() == 1 and "<c-e><Down>" or "<Down>"
+end, { expr = true })
+-- c-j: Move cursor up
+vim.keymap.set("i", "<c-k>", function()
+  return vim.fn.pumvisible() == 1 and "<c-e><Up>" or "<Up>"
+end, { expr = true })
+-- c-l: Move word right
+vim.keymap.set("i", "<c-l>", "<c-o>w")
+-- c-z: Command key for tmux
+-- c-x:
+-- c-c:
+-- c-v: Paste
+vim.keymap.set("i", "<c-v>", "<c-g>u<c-o>gP")
+
+-- Visual Mode Key
+-- K: run telescope on the selected word
+vim.keymap.set("v", "K", LazyVim.pick("grep_string", { word_match = "-w" }))
+
+-- Terminal Mode
+-- <F1>: go to the next window as I can't use the ctrl-jk key etc
+vim.keymap.set("t", "<F1>", "<c-w>N")
