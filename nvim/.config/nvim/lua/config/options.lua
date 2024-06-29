@@ -43,6 +43,8 @@ vim.o.bufhidden = "delete"
 vim.o.tw = 0
 vim.opt.backspace = { "indent", "eol", "start" }
 vim.o.wrap = false
+-- Do not autowrap line by default
+-- vim.opt.formatoptions = vim.opt.formatoptions - { "t" }
 
 vim.o.ruler = true
 vim.opt.iskeyword = vim.opt.iskeyword - { "(" }
@@ -91,19 +93,38 @@ local function find_xclip()
   return ""
 end
 
-local xclip_path = find_xclip()
-if xclip_path ~= "" then
+local function is_in_wsl()
+  return (vim.env.WSL_DISTRO_NAME ~= "")
+end
+
+if is_in_wsl() then
   vim.g.clipboard = {
-    name = "myClipboard",
+    name = "WslClipboard",
     copy = {
-      ["+"] = { xclip_path, "-sel", "clipboard" },
-      ["*"] = { xclip_path, "-sel", "clipboard" },
+      ["+"] = "clip.exe",
+      ["*"] = "clip.exe",
     },
     paste = {
-      ["+"] = { xclip_path, "-out", "-sel", "clipboard" },
-      ["*"] = { xclip_path, "-out", "-sel", "clipboard" },
+      ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
     },
+    cache_enabled = 0,
   }
+else
+  local xclip_path = find_xclip()
+  if xclip_path ~= "" then
+    vim.g.clipboard = {
+      name = "myClipboard",
+      copy = {
+        ["+"] = { xclip_path, "-sel", "clipboard" },
+        ["*"] = { xclip_path, "-sel", "clipboard" },
+      },
+      paste = {
+        ["+"] = { xclip_path, "-out", "-sel", "clipboard" },
+        ["*"] = { xclip_path, "-out", "-sel", "clipboard" },
+      },
+    }
+  end
 end
 
 -- No highlight Search
@@ -120,3 +141,21 @@ vim.o.synmaxcol = 256
 vim.o.fillchars = "vert:|,fold:."
 
 vim.o.autochdir = true
+
+-- lsp configuration.  Unfortunately there's somewhere else that it's overriding the virtual_text so
+-- this is not effective.
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  float = {
+    border = "single",
+    format = function(diagnostic)
+      return string.format(
+        "%s (%s) [%s]",
+        diagnostic.message,
+        diagnostic.source,
+        diagnostic.code or diagnostic.user_data.lsp.code
+      )
+    end,
+  },
+})

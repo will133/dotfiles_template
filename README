@@ -7,3 +7,10 @@ Each directory is a module and use stow to manage them
 Basically run these to symlink the dot files:
 
     $ ./setup
+
+# Note that other languages for lsp 
+
+$ sudo apt-get update
+
+# For Java
+$ sudo apt install default-jdk

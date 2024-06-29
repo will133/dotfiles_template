@@ -45,6 +45,24 @@ end)
 
 -- Leader normal
 vim.keymap.set("n", "<Leader>v", LazyVim.pick.config_files())
+-- Toggle settings on and off
+-- Toggle text wrapping
+--
+local function toggle_format(opt, mesg)
+  if vim.opt.formatoptions:get()[opt] ~= nil then
+    vim.opt.formatoptions:remove(opt)
+    vim.notify(mesg .. " is now off")
+  else
+    vim.opt.formatoptions:append(opt)
+    vim.notify(mesg .. " is now on")
+  end
+end
+
+vim.keymap.set("n", "<Leader>tw", function()
+  toggle_format("a", "Autowrapping")
+end, {
+  desc = "Toggle autoformat wrapping",
+})
 
 -- Command
 vim.keymap.set("c", "<c-a>", "<home>")
@@ -93,8 +111,11 @@ vim.keymap.set("n", "dd", "dd")
 -- Space: Scroll down a pastetoggle
 vim.keymap.set("n", "<Space>", "<PageDown>")
 
-vim.keymap.set("n", "Q", "gq")
-vim.keymap.set("v", "Q", "gq")
+-- For some reason gq does not seem to work.  gw seems to work ok
+-- vim.keymap.set("n", "Q", "gq")
+-- vim.keymap.set("v", "Q", "gq")
+vim.keymap.set("n", "Q", "gw")
+vim.keymap.set("v", "Q", "gw")
 
 -- W: Move word forward
 -- E: Move to end of word forward

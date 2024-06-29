@@ -11,6 +11,11 @@ return {
             all = {
               crust = "#404040",
             },
+            -- mocha = {
+            --   base = "#000000",
+            --   mantle = "#000000",
+            --   crust = "#000000",
+            -- },
           },
         })
         rtn.load()
