@@ -258,7 +258,7 @@ vim.keymap.set("i", "<c-l>", "<c-o>w")
 -- c-x:
 -- c-c:
 -- c-v: Paste
-vim.keymap.set("i", "<c-v>", "<c-g>u<c-o>gP")
+-- vim.keymap.set("i", "<c-v>", "<c-g>u<c-o>gP")
 
 -- Visual Mode Key
 -- K: run telescope on the selected word
