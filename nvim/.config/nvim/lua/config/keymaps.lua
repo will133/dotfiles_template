@@ -64,6 +64,10 @@ end, {
   desc = "Toggle autoformat wrapping",
 })
 
+-- Open project
+vim.keymap.set("n", "<Leader>fp", "<cmd>Telescope neovim-project discover<CR>", { desc = "Project" })
+vim.keymap.set("n", "<Leader>fh", "<cmd>Telescope neovim-project history<CR>", { desc = "Project Histroy" })
+
 -- Command
 vim.keymap.set("c", "<c-a>", "<home>")
 vim.keymap.set("c", "<c-e>", "<end>")

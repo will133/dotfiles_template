@@ -94,7 +94,7 @@ local function find_xclip()
 end
 
 local function is_in_wsl()
-  return (vim.env.WSL_DISTRO_NAME ~= "")
+  return (vim.env.WSL_DISTRO_NAME ~= nil)
 end
 
 if is_in_wsl() then
@@ -140,7 +140,8 @@ vim.o.synmaxcol = 256
 -- Folding
 vim.o.fillchars = "vert:|,fold:."
 
-vim.o.autochdir = true
+-- It's ultra annoying as other plugins keep turning this off
+-- vim.o.autochdir = true
 
 -- lsp configuration.  Unfortunately there's somewhere else that it's overriding the virtual_text so
 -- this is not effective.

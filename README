@@ -14,3 +14,7 @@ $ sudo apt-get update
 
 # For Java
 $ sudo apt install default-jdk
+
+# Mac
+# brew install neovim
+# brew install ripgrep
