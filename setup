@@ -5,3 +5,4 @@ stow vim
 stow nvim
 stow git
 stow tmux
+stow kitty
