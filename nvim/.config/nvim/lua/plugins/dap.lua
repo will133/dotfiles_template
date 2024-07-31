@@ -65,5 +65,16 @@ return {
         console = "integratedTerminal",
       },
     }
+    dap.configurations["rust"] = {
+      {
+        type = "codelldb",
+        request = "launch",
+        name = "Debug test",
+        cargo = {
+          args = { "test", "--no-run" },
+        },
+        console = "integratedTerminal",
+      },
+    }
   end,
 }

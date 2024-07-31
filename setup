@@ -1,7 +1,29 @@
 #/bin/bash
+set -e
 
 stow bash
 stow vim
 stow nvim
 stow git
 stow tmux
+
+if [ ! -x "$HOME/bin/micromamba" ]; then
+    local url
+    local unameOut
+    unameOut="$(uname -s)"
+    case "${uname_out}" in
+        Linux*)
+            url=https://micro.mamba.pm/api/micromamba/linux-64/latest
+            ;;
+        Darwin*)
+            url=https://micro.mamba.pm/api/micromamba/osx-arm64/latest
+            ;;
+        *)
+            echo "Skipping micromamba install"
+            ;;
+    esac
+    if [ ! -z "$url" ]; then
+        echo "Installing micromamba"
+        (cd $HOME && curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba)
+    fi
+fi

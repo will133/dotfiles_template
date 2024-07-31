@@ -7,6 +7,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      diagnostics = {
+        -- virtual_text = false,
+        virtual_text = {
+          virt_text_pos = "eol",
+        },
+      },
       servers = {
         vtsls = {
           root_dir = get_root_dir,
@@ -38,4 +44,21 @@ return {
       -- refer to the configuration section below
     },
   },
+  -- {
+  --   "nvimdev/lspsaga.nvim",
+  --   config = function()
+  --     require("lspsaga").setup({})
+  --   end,
+  --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter", -- optional
+  --     "nvim-tree/nvim-web-devicons", -- optional
+  --   },
+  -- },
+  --https://git.sr.ht/~whynothugo/lsp_lines.nvim
+  -- {
+  --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+  --   config = function()
+  --     require("lsp_lines").setup()
+  --   end,
+  -- },
 }

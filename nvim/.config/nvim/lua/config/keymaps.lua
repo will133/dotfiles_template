@@ -63,6 +63,13 @@ vim.keymap.set("n", "<Leader>tw", function()
 end, {
   desc = "Toggle autoformat wrapping",
 })
+-- Code related
+-- Toggle inlay type hint
+vim.keymap.set("n", "<Leader>ct", function()
+  -- Not sure what is amiss here, but without the argument is correct.  Otherwise it would not work.
+  ---@diagnostic disable-next-line: missing-parameter
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle Inlay Type Hint" })
 
 -- Open project
 vim.keymap.set("n", "<Leader>fp", "<cmd>Telescope neovim-project discover<CR>", { desc = "Project" })
