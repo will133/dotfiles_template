@@ -6,6 +6,7 @@ stow vim
 stow nvim
 stow git
 stow tmux
+stow kitty
 
 if [ ! -x "$HOME/bin/micromamba" ]; then
     local url
