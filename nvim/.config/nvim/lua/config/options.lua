@@ -30,7 +30,7 @@ vim.opt.relativenumber = false
 vim.wo.number = false
 
 -- Turn off virtual text for type hint
-vim.lsp.inlay_hint.enable(false)
+-- vim.lsp.inlay_hint.enable(false)
 
 vim.o.expandtab = true
 vim.o.shiftwidth = 4

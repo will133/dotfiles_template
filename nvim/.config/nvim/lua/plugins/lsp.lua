@@ -7,6 +7,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      inlay_hints = {
+        enabled = false,
+      },
       diagnostics = {
         -- virtual_text = false,
         virtual_text = {
@@ -16,6 +19,13 @@ return {
       servers = {
         vtsls = {
           root_dir = get_root_dir,
+          enableMoveToFileCodeAction = true,
+          autoUseWorkspaceTsdk = true,
+          experimental = {
+            completion = {
+              enableServerSideFuzzyMatch = true,
+            },
+          },
         },
         -- tsserver = {
         --   enabled = true,
