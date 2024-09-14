@@ -1,8 +1,8 @@
 return {
   "coffebar/neovim-project",
   keys = {
-    { "<leader>pp", "<cmd>NeovimProjectDiscover<cr>", desc = "Discover Project" },
-    { "<leader>ph", "<cmd>NeovimProjectHistory<cr>", desc = "Project History" },
+    { "<leader>pp", "<cmd>Telescope neovim-project discover<cr>", desc = "Discover Project" },
+    { "<leader>ph", "<cmd>Telescope neovim-project history<cr>", desc = "Project History" },
     { "<leader>pr", "<cmd>NeovimProjectRecent<cr>", desc = "Load previous session" },
   },
   opts = {
@@ -11,6 +11,7 @@ return {
       "~/.config/*",
       "~/.dotfiles",
     },
+    -- This doesn't seem to have any effect for some reason?
     last_session_on_startup = false,
   },
   init = function()
