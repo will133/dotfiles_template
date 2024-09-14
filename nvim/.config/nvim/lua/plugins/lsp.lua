@@ -37,6 +37,7 @@ return {
             -- other on attach code
             require("ltex-utils").on_attach(bufnr)
           end,
+          language = "en-US",
         },
       },
     },

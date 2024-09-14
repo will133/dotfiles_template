@@ -14,7 +14,7 @@ return {
     local actions = require("telescope.actions")
     return {
       defaults = {
-        layout_strategies = "vertical",
+        layout_strategy = "vertical",
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
         winblend = 0,
@@ -36,12 +36,12 @@ return {
           },
         },
       },
-      pickers = {
-        find_files = {
-          theme = "ivy",
-          previewer = false,
-        },
-      },
+      -- pickers = {
+      --   find_files = {
+      --     theme = "ivy",
+      --     previewer = false,
+      --   },
+      -- },
     }
   end,
 }

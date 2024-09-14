@@ -1,9 +1,15 @@
 return {
   "coffebar/neovim-project",
+  keys = {
+    { "<leader>pp", "<cmd>NeovimProjectDiscover<cr>", desc = "Discover Project" },
+    { "<leader>ph", "<cmd>NeovimProjectHistory<cr>", desc = "Project History" },
+    { "<leader>pr", "<cmd>NeovimProjectRecent<cr>", desc = "Load previous session" },
+  },
   opts = {
     projects = { -- define project roots
       "~/code/*",
       "~/.config/*",
+      "~/.dotfiles",
     },
     last_session_on_startup = false,
   },
