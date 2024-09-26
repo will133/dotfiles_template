@@ -147,3 +147,8 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 [[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
+
+# fzf setup
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+_fzf_setup_completion path ag git kubectl nvim nv
+_fzf_setup_completion dir tree
