@@ -7,8 +7,8 @@
     co = checkout
     tagcommit = rev-list -n 1
 [user]
-    name = Lee, William
-    email = lee.will@gmail.com
+    name = LastName, FirstName
+    email = myemail@mydomain.com
 [push]
     autoSetupRemote = true
 [core]
